@@ -11,37 +11,39 @@ class Api::ConcertsController < ApplicationController
     if concert.save
       render json: concert
     else
-      render json: { message :'There was an issue adding this concert.' }, status: 400
-  end
-
-  def show
-    render json: @concert
-  end
-
-  def update
-    if @concert.update(concert_params)
-      render json: @concert
-    else
-      render json: { message :'There was an issue updating this concert.' }, status: 400
-  end
-
-  def destroy
-    if @concert.destroy
-      render json: { message: 'Successfully Removed Concert' }, status: 204
-    else
-      render json: { message: 'Unable to Delete'}, status: 400
+      render json: { message: 'There was an issue adding this concert.' }, status: 400
     end
   end
 
+    def show
+      render json: @concert
+    end
 
-  private
+    def update
+      if @concert.update(concert_params)
+        render json: @concert
+      else
+        render json: { message: 'There was an issue updating this concert.' }, status: 400
+      end
+    end
 
-  def set_concert
-    @concert = Concert.find(params[:id])
-  end
+      def destroy
+        if @concert.destroy
+          render json: { message: 'Successfully Removed Concert' }, status: 204
+        else
+          render json: { message: 'Unable to Delete'}, status: 400
+        end
+      end
 
-  def concert_params
-    params.require(:concert).permit(:band, :venue, :tour, :date, :song, :attendee_count)
-  end
 
-end
+      private
+
+      def set_concert
+        @concert = Concert.find(params[:id])
+      end
+
+      def concert_params
+        params.require(:concert).permit(:band, :venue, :tour, :date, :song, :attendee_count)
+      end
+
+    end

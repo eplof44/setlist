@@ -50,4 +50,5 @@ class Api::CommentsController < ApplicationController
     params.require(:comment).permit(:content, :concert_id)
   end
 
+
 end
