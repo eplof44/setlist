@@ -33,13 +33,15 @@ class Api::ConcertsController < ApplicationController
     end
   end
 
-  
+
   private
 
   def set_concert
+    @concert = Concert.find(params[:id])
   end
 
   def concert_params
+    params.require(:concert).permit(:band, :venue, :tour, :date, :song, :attendee_count)
   end
 
 end
