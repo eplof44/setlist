@@ -73,12 +73,33 @@ export const getConcerts = () => {
       method: "GET",
     })
     .then(res => res.json())
-    .then(trails => {
+    .then(concerts => {
       dispatch(setConcerts(concerts))
     })
     .catch(error => console.log(error));
   }
 }
 
+export const createConcert = (concert, routerHistory) => {
+  return dispatch => {
+    return fetch(`${API_URL}/concerts`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({concert: concert})
+    })
+    .then(handleErrors)
+    .then(response => response.json())
+    .then(concert => {
+      dispatch(addConcert(concert))
+      routerHistory.replace(`/concerts/${concert.id}`)
+    })
+    .catch(error => {
+      dispatch({type: 'error'})
+      routerHistory.replace('/concert/new');
+     })
+  }
+}
 
 //comments async actions
