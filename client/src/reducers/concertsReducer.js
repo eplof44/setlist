@@ -5,10 +5,10 @@ export default (state={concerts:[]}, action) => {
     case 'GET_CONCERTS':
     return {...state, concerts: action.concerts}
 
-    case 'ADD_CONCERTS':
+    case 'ADD_CONCERT':
     return {concerts: [...state.concerts, action.concert]};
 
-    case 'REMOVE_CONCERTS':
+    case 'REMOVE_CONCERT':
     return {concerts: state.concerts.filter(concert => concert.id !== action.concert)};
 
     case 'EDIT_CONCERT':

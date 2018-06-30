@@ -4,85 +4,108 @@ import { createConcert } from '../actions/concerts';
 
 //
 class ConcertForm extends Component {
-}
-//
-// //
-// //   handleOnChange = event => {
-// //    const { name, value } = event.target;
-// //    const currentConcertFormData = Object.assign({}, this.props.concertFormData, {
-// //      [name]: value
-// //    })
-// //    this.props.updateConcertFormData(currentConcertFormData)
-// //  }
-// //
-// //
-// //   handleOnSubmit = event => {
-// //     event.preventDefault()
-// //     this.props.createConcert(this.props.concertFormData)
-// //   }
-// //
-// //   render() {
-// //     const { band, venue, tour, date, song } = this.props.concertFormData
-// //     return (
-// //
-// //       <div>
-// //         <h3>Add a New Concert:</h3>
-// //         <form onSubmit={this.handleOnSubmit}>
-// //
-// //           <div>
-// //             <label htmlFor="name">Band:</label>
-// //             <input
-// //               type="text"
-// //               onChange={this.handleOnChange}
-// //               name="band"
-// //               value={band}
-// //             />
-// //           </div>
-// //
-// //           <div>
-// //             <label htmlFor="venue">Venue:</label>
-// //             <input
-// //               type="text"
-// //               onChange={this.handleOnChange}
-// //               name="venue"
-// //               value={venue}
-// //             />
-// //           </div>
-// //
-// //           <div>
-// //             <label htmlFor="date">Venue:</label>
-// //             <input
-// //               type="date"
-// //               onChange={this.handleOnChange}
-// //               name="date"
-// //               value={date}
-// //             />
-// //           </div>
-// //
-// //           <div>
-// //             <label htmlFor="song">Setlist:</label>
-// //             <input
-// //               type="text"
-// //               onChange={this.handleOnChange}
-// //               name="song"
-// //               value={song}
-// //             />
-// //           </div>
-// //
-// //           <button type="submit">Add concert</button>
-// //
-// //         </form>
-// //       </div>
-// //
-// //     )
-// //   }
-//   }
-// //
-//
-// const mapStateToProps = (state) => {
-//   return ({
-//     concertFormData: state.concertFormData
-//   })
-// }
-//
+
+  constructor() {
+      super();
+
+      this.state = {
+        band: '' ,
+        venue: '' ,
+        tour: '',
+        date: '',
+        song: '',
+      };
+    }
+
+    handleOnChange = event => {
+          this.setState({
+            [event.target.name]: event.target.value
+          });
+        }
+
+        handleOnSubmit = event => {
+            event.preventDefault();
+            this.props.createConcert(this.state, this.props.history)
+          }
+
+          render(){
+             return (
+               <div>
+                 <form style={{ marginTop: '16px' }} onSubmit={this.handleOnSubmit} >
+                   <label>
+                     Band: <br></br>
+                       <input
+                         className="form-control"
+                         type="text"
+                         name="band"
+                         placeholder="Band"
+                         value={this.state.band}
+                         onChange={this.handleOnChange}
+                         />
+                   </label> <br></br>
+                   <label>
+                     Venue: <br></br>
+                       <input
+                         className="form-control"
+                         type="text"
+                         name="venue"
+                         placeholder="Venue"
+                         value={this.state.venue}
+                         onChange={this.handleOnChange}
+                         />
+                   </label><br></br>
+                   <label>
+                     Tour: <br></br>
+                       <input
+                         className="form-control"
+                         type="text"
+                         name="tour"
+                         placeholder="Tour"
+                         value={this.state.tour}
+                         onChange={this.handleOnChange}
+                         />
+                   </label><br></br>
+
+
+                   <label>
+                     Date: <br></br>
+                       <input
+                         className="form-control"
+                         type="date"
+                         name="date"
+                         placeholder="Date"
+                         value={this.state.date}
+                         onChange={this.handleOnChange}
+                         />
+                   </label><br></br>
+
+
+                   <label>
+                     Songs: <br></br>
+                       <input
+                         className="form-control"
+                         type="text"
+                         name="song"
+                         placeholder="Setlist"
+                         value={this.state.song}
+                         onChange={this.handleOnChange}
+                         />
+                   </label>
+
+<br></br>
+
+
+                   <button type="submit">Add Setlist </button>
+                 </form>
+               </div>
+             );
+           }
+         }
+
+
+
+
+
+
+
 export default ConcertForm;
