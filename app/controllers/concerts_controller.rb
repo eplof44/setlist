@@ -1,4 +1,5 @@
-class Api::ConcertsController < ApplicationController
+class ConcertsController < ApplicationController
+
   before_action :set_concert, only: [:show, :update, :destroy]
 
 

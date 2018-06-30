@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Concert.create(
+  band: "Bleachers",
+  venue: "Bowery Ballroom",
+  tour: "Gone Now",
+  song: "Goodmorning \n  Don't Take the Money  \n  All My Heroes"
+)
+
+
+Comment.create(
+  content: "Great show. They played older stuff.",
+  concert_id: 3
+)
