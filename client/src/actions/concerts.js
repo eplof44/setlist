@@ -102,4 +102,40 @@ export const createConcert = (concert, routerHistory) => {
   }
 }
 
+export const editConcert = (concert, routerHistory) => {
+  return dispatch => {
+    return fetch(`${API_URL}/concerts/${concert.id}`, {
+      method: "PATCH",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({concert: concert})
+    })
+    .then(handleErrors)
+    .then(response => response.json())
+    .then(concert => {
+      dispatch(updateConcert(concert))
+      routerHistory.replace(`/concerts/${concert.id}`)
+    })
+    .catch(error => {
+      dispatch({type: 'error'})
+      routerHistory.replace('/concerts');
+     })
+  }
+}
+
+export const deleteConcert = (concertId, routerHistory) => {
+  return dispatch => {
+    return fetch(`${API_URL}/concerts/${concertId}`, {
+      method: "DELETE",
+    })
+    .then(response => {
+      routerHistory.replace('/concerts');
+      dispatch(removeTrail(concertId));
+    })
+    .catch(error => console.log(error))
+  }
+}
+
+
 //comments async actions
