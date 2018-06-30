@@ -1,7 +1,7 @@
 export default (state={concerts:[]}, action) => {
 
   switch (action.type) {
-    
+
     case 'GET_CONCERTS':
     return {...state, concerts: action.concerts}
 
@@ -30,3 +30,8 @@ export default (state={concerts:[]}, action) => {
       return concert
     }
   });
+
+  default:
+  return state;
+}
+}
