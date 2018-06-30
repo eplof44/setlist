@@ -64,3 +64,21 @@ export const removeComment = comment => {
     concert
   }
 }
+
+//concert async actions
+
+export const getConcerts = () => {
+  return dispatch => {
+    return fetch(`${API_URL}/concerts`, {
+      method: "GET",
+    })
+    .then(res => res.json())
+    .then(trails => {
+      dispatch(setConcerts(concerts))
+    })
+    .catch(error => console.log(error));
+  }
+}
+
+
+//comments async actions
