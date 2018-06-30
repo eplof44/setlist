@@ -11,9 +11,9 @@ export default (state = initialState, action) => {
 
   switch(action.type) {
     case 'INPUT_DATA':
-    return action.itemFormData;
+    return action.concertFormData;
 
-    case 'RESET_ITEM_FORM':
+    case 'RESET_CONCERT_FORM':
     return initialState;
 
     default:
