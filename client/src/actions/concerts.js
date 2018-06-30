@@ -124,18 +124,90 @@ export const editConcert = (concert, routerHistory) => {
   }
 }
 
-export const deleteConcert = (concertId, routerHistory) => {
+export const removeConcert = (concertId, routerHistory) => {
   return dispatch => {
     return fetch(`${API_URL}/concerts/${concertId}`, {
       method: "DELETE",
     })
     .then(response => {
       routerHistory.replace('/concerts');
-      dispatch(removeTrail(concertId));
+      dispatch(removeConcert(concertId));
+    })
+    .catch(error => console.log(error))
+  }
+}
+
+export const addAttendee = (concert) => {
+  debugger
+  return dispatch => {
+    return fetch(`${API_URL}/concerts/${concert.id}`, {
+      method: "PUT",
+      headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({concert: Object.assign(...concert, { attendee_count: concert.attendee_count + 1 })})
+      })
+      .then(response => response.json())
+      .then(concert => {
+
+        dispatch(addAttendee(concert))
+      })
+    .catch(error => console.log(error))
+  }
+}
+
+//comments async actions
+export const getComments = (concertId) => {
+  return dispatch => {
+    return fetch(`${API_URL}/concerts/${concertId}/comments`, {
+      method: "GET",
+    })
+    .then(res => res.json())
+    .then(comments => {
+      dispatch(setComments(comments))
+    })
+    .catch(error => console.log(error));
+  }
+}
+
+export const createComment = (comment) => {
+  return dispatch => {
+    return fetch(`${API_URL}/concerts/${comment.concert_id}/comments`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({comment: comment.comment})
+    })
+    .then(handleErrors)
+    .then(response => response.json())
+    .then(comment => {
+      dispatch(addComment(comment))
+    })
+    .catch(error => {
+      dispatch({type: 'error'})
+     })
+  }
+}
+
+export const removeComment = (commentId, routerHistory) => {
+  return dispatch => {
+    return fetch(`${API_URL}/comments/${commentId}`, {
+      method: "DELETE",
+    })
+    .then(response => {
+      routerHistory.replace('/concerts');
+      dispatch(removeConcert(concertId));
     })
     .catch(error => console.log(error))
   }
 }
 
 
-//comments async actions
+
+function handleErrors(response){
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response;
+}
