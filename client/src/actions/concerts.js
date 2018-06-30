@@ -28,11 +28,19 @@ export const removeConcert = concert => {
   }
 }
 
+export const addAttendee = concert => {
+  return {
+    type: 'ADD_ATTENDEE',
+    concert
+  }
+}
 
-add attendee
-
-update
-
+export const updateConcert = concert => {
+  return {
+    type: 'EDIT_CONCERT',
+    concert
+  }
+}
 
 //Comment Action Creators
 get
