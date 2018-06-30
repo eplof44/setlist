@@ -1,6 +1,5 @@
 import React from 'react';
 import "../App.css";
-// import Concerts from "../containers/ConcertPage";
 import NavBar from './NavBar';
 
 
