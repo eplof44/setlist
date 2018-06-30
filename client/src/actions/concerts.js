@@ -67,7 +67,7 @@ export const removeComment = comment => {
 
 //concert async actions
 
-export const getConcerts = () => {
+export const getConcerts= () => {
   return dispatch => {
     return fetch(`${API_URL}/concerts`, {
       method: "GET",
@@ -137,7 +137,7 @@ export const deleteConcert = (concertId, routerHistory) => {
   }
 }
 
-export const plusAttendee = (concert) => {
+export const addAttendee = (concert) => {
   debugger
   return dispatch => {
     return fetch(`${API_URL}/concerts/${concert.id}`, {
