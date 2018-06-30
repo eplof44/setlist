@@ -43,8 +43,24 @@ export const updateConcert = concert => {
 }
 
 //Comment Action Creators
-get
 
-add
+export const setComments = comments => {
+  return {
+    type: 'GET_COMMENTS',
+    comments
+  }
+}
 
-delete
+export const addComment = comment => {
+  return {
+    type:'ADD_COMMENT',
+    comment
+  }
+}
+
+export const removeComment = comment => {
+  return {
+    type: 'REMOVE_COMMENT',
+    concert
+  }
+}
