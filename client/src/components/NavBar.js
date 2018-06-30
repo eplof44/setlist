@@ -22,7 +22,7 @@ const NavBar = () => {
       activeStyle={{
         background: "white"
       }}
-      >Add a new concert</NavLink>
+      >Add a New Setlist</NavLink>
     <NavLink
       to="/concerts"
       exact
@@ -30,15 +30,15 @@ const NavBar = () => {
       activeStyle={{
         background: "white"
       }}
-      >view concerts</NavLink>
+      >View Concerts</NavLink>
     <NavLink
-      to="/"
+      to="/venues"
       exact
       style={link}
       activeStyle={{
         background: "white"
       }}
-      >Home</NavLink>
+      >View Venues</NavLink>
     </div>
     )
 }

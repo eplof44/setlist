@@ -61,7 +61,7 @@ export const addComment = comment => {
 export const removeComment = comment => {
   return {
     type: 'REMOVE_COMMENT',
-    concert
+    comment
   }
 }
 
@@ -124,7 +124,7 @@ export const editConcert = (concert, routerHistory) => {
   }
 }
 
-export const removeConcert = (concertId, routerHistory) => {
+export const deleteConcert = (concertId, routerHistory) => {
   return dispatch => {
     return fetch(`${API_URL}/concerts/${concertId}`, {
       method: "DELETE",
@@ -137,7 +137,7 @@ export const removeConcert = (concertId, routerHistory) => {
   }
 }
 
-export const addAttendee = (concert) => {
+export const plusAttendee = (concert) => {
   debugger
   return dispatch => {
     return fetch(`${API_URL}/concerts/${concert.id}`, {
@@ -190,14 +190,14 @@ export const createComment = (comment) => {
   }
 }
 
-export const removeComment = (commentId, routerHistory) => {
+export const deleteComment = (commentId, routerHistory) => {
   return dispatch => {
     return fetch(`${API_URL}/comments/${commentId}`, {
       method: "DELETE",
     })
     .then(response => {
       routerHistory.replace('/concerts');
-      dispatch(removeConcert(concertId));
+      dispatch(removeComment(commentId));
     })
     .catch(error => console.log(error))
   }
