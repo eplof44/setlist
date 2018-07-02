@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ConcertForm from './ConcertForm';
 import ConcertList from '../components/ConcertList';
 import ConcertPage from '../containers/ConcertPage';
+import Venues from '../components/Venues';
+import VenuesPage from '../containers/VenuesPage';
 
 // import ConcertForm from './ConcertForm';
 // import ConcertList from '../components/ConcertList';
@@ -24,6 +26,8 @@ class App extends Component {
 
         <Route exact path = '/concerts/new' component = {ConcertForm} />
         <Route exact path = '/concerts' component = {ConcertPage} />
+        <Route exact path = '/venues' component = {VenuesPage} />
+
   <Footer />
           </div>
       </Router>

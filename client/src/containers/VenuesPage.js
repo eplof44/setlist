@@ -3,11 +3,10 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { getConcerts } from '../actions/concerts';
-import ConcertList from '../components/ConcertList';
 import Venues from '../components/Venues';
 
 
-class ConcertPage extends Component {
+class VenuesPage extends Component {
 
     componentDidMount(){
       this.props.getConcerts()
@@ -19,7 +18,7 @@ class ConcertPage extends Component {
             return(
               <div className="ConcertsContainer">
                 {concerts.concerts.map(concert =>
-                  <ConcertList key={concert.id}
+                  <Venues key={concert.id}
                             concert={concert}
                              />)}
            </div>
@@ -35,4 +34,4 @@ class ConcertPage extends Component {
   };
 
 
-  export default connect(mapStateToProps, { getConcerts })(ConcertPage);
+  export default connect(mapStateToProps, { getConcerts })(VenuesPage);
