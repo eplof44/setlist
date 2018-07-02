@@ -22,4 +22,4 @@ const mapStateToProps = (state) => {
     concerts: state.concerts
   }
  }
-export default connect(mapStateToProps,ConcertCard);
+export default connect(mapStateToProps)(ConcertCard);

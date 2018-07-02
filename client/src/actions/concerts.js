@@ -97,7 +97,7 @@ export const createConcert = (concert, routerHistory) => {
     })
     .catch(error => {
       dispatch({type: 'error'})
-      routerHistory.replace('/concert/new');
+      routerHistory.replace('/concerts/new');
      })
   }
 }

@@ -23,7 +23,7 @@ class App extends Component {
         <NavBar />
 
         <Route exact path = '/concerts/new' component = {ConcertForm} />
-        <Route exact path = '/concerts' component = {ConcertList} />
+        <Route exact path = '/concerts' component = {ConcertPage} />
   <Footer />
           </div>
       </Router>

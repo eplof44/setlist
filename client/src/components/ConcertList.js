@@ -1,22 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import ConcertPage from '../containers/ConcertPage';
 
-const ConcertList = ({ concerts }) => {
+import React, { Component } from 'react'
 
-  const renderConcerts = concerts.map(concert =>
-    <Link key={concert.id} to={`/concerts/${concert.id}`}>
-      <div className="ConcertList">
-        <h3>{concert.band}</h3>
+const ConcertList = ({ concerts }) => (
+  <div className="concert-list">
+    {concerts.map(concert => (
+      <div className="concert-list">
+        <div className="concert">
+          <h2>Concert: {concert.band}</h2>
+        </div>
       </div>
-    </Link>
-  );
+      ))}
+  </div>
+);
 
-  return (
-    <div>
-      {renderConcerts}
-    </div>
-  );
-};
+ConcertList.defaultProps = {
+  concerts: [],
+}
 
 export default ConcertList;
