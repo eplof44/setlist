@@ -2,20 +2,15 @@ import ConcertPage from '../containers/ConcertPage';
 
 import React, { Component } from 'react'
 
-const ConcertList = ({ concerts }) => (
-  <div className="concert-list">
-    {concerts.map(concert => (
-      <div className="concert-list">
-        <div className="concert">
-          <h2>Concert: {concert.band}</h2>
-        </div>
+const ConcertList= (props) =>
+  <div>
+    <div className="card card-inverse card-success card-primary mb-3 text-center">
+      <div className="card-block">
+        <blockquote className="card-blockquote">
+          <p>{props.concert.band}</p>
+        </blockquote>
       </div>
-      ))}
-  </div>
-);
-
-ConcertList.defaultProps = {
-  concerts: [],
-}
+    </div>
+  </div>;
 
 export default ConcertList;

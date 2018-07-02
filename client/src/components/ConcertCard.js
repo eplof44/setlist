@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 class ConcertCard extends Component {
 
@@ -17,9 +16,4 @@ class ConcertCard extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    concerts: state.concerts
-  }
- }
-export default connect(mapStateToProps)(ConcertCard);
+export default ConcertCard;
