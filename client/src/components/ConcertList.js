@@ -1,23 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ConcertCard from './ConcertCard'
-import { getComments } from '../actions/concerts';
+import ConcertPage from '../containers/ConcertPage';
 
 const ConcertList = ({ concerts }) => {
 
   const renderConcerts = concerts.map(concert =>
-     <ConcertCard concert={concert}  key={concert.id}/>
-
+    <Link key={concert.id} to={`/concerts/${concert.id}`}>
+      <div className="ConcertList">
+        <h3>{concert.band}</h3>
+      </div>
+    </Link>
   );
 
   return (
-
-      <div className="container">
-        <div className="row">
-          {renderConcerts}
-        </div>
-      </div>
-
+    <div>
+      {renderConcerts}
+    </div>
   );
 };
 

@@ -24,9 +24,11 @@ class ConcertForm extends Component {
         }
 
         handleOnSubmit = event => {
-            event.preventDefault();
-            this.props.createConcert(this.state, this.props.history)
-          }
+          event.preventDefault();
+          const { createConcert, history } = this.props;
+          createConcert(this.state, history);
+    }
+
 
           render(){
              return (
