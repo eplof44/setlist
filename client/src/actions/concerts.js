@@ -85,16 +85,10 @@ export const addComment = comment => {
   }
 }
 
-export const removeComment = comment => {
-  return {
-    type: 'REMOVE_COMMENT',
-    comment
-  }
-}
 
 //concert async actions
 
-export const getConcerts= () => {
+export const getConcerts = () => {
   return dispatch => {
     return fetch(`${API_URL}/concerts`, {
       method: "GET",
@@ -200,7 +194,7 @@ export const getComments = (concertId) => {
 
 
 
-export const createComment = (comment, concert, routerHistory) => {
+export const createComment = (comment) => {
   return dispatch => {
     return fetch(`${API_URL}/concerts/${comment.concert_id}/comments`, {
       method: "POST",
@@ -213,7 +207,6 @@ export const createComment = (comment, concert, routerHistory) => {
     .then(response => response.json())
     .then(comment => {
       dispatch(addComment(comment))
-      routerHistory.replace(`/concerts/${concert.id}`)
     })
     .catch(error => {
       dispatch({type: 'error'})

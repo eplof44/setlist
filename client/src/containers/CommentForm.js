@@ -23,12 +23,10 @@ class CommentForm extends Component {
   }
 
   handleOnSubmit = event => {
-      event.preventDefault();
-      this.props.createComment(this.state);
-      this.setState({
-        comment: ''
-      });
-    }
+    event.preventDefault();
+    const { createComment, history } = this.props;
+    createComment(this.state, history);
+  }
 
   render() {
 
@@ -36,7 +34,7 @@ class CommentForm extends Component {
       <div className="container-fluid create-concert-container">
         <div className="row comment-form">
           <div className="row">
-            <div className="col-sm-7">
+            <div>
               <h2>Leave a Comment!</h2>
               <form onSubmit={(event) => this.handleOnSubmit(event)}>
                 <div className="form-group">

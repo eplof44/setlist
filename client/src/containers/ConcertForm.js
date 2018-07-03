@@ -87,7 +87,7 @@ class ConcertForm extends Component {
 
       <label>
       Songs: <br></br>
-      <input
+      <textarea
       className="form-control"
       type="text"
       name="song"
