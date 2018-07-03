@@ -1,6 +1,8 @@
 import React from 'react';
 import Comments from '../components/Comments'
 import ConcertShow from '../containers/ConcertShow';
+import CommentForm from '../containers/CommentForm';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 
 
 const ConcertCard = ( props ) => {
@@ -14,7 +16,8 @@ const ConcertCard = ( props ) => {
             <h4> Venue: {props.concert.venue}</h4>
             <p>Tour: {props.concert.tour}</p>
             <h6> Date: {props.concert.date}</h6>
-            <h6>Songs: {props.concert.songs}</h6>
+            <h6>Songs: {props.concert.song}</h6>
+            <Route path="/concerts/:id" component={CommentForm} />
 
             <div className="comment-container">
               {props.concert.comments.map(comment =>
@@ -23,6 +26,7 @@ const ConcertCard = ( props ) => {
             </div>
           </div>
 </div>
+
 )
 }
 

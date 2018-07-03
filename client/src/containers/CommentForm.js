@@ -12,7 +12,7 @@ class CommentForm extends Component {
     this.state = {
 
       content: "",
-      concert_id: this.props.project_id,
+      concert_id: this.props.concert_id,
     }
   }
 
@@ -35,7 +35,7 @@ class CommentForm extends Component {
   render() {
 
     return(
-      <div className="container-fluid create-project-container">
+      <div className="container-fluid create-concert-container">
         <div className="row comment-form">
           <div className="row">
             <div className="col-sm-7">

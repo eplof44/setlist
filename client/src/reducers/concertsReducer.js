@@ -5,6 +5,13 @@ export default (state={concerts:[]}, action) => {
     case 'GET_CONCERTS':
     return {...state, concerts: action.concerts}
 
+    case 'GET_ONE_CONCERT':
+
+      return {
+        ...state,
+        [action.concert.id]: action.concert
+      }
+
     case 'ADD_CONCERT':
     return {concerts: [...state.concerts, action.concert]};
 

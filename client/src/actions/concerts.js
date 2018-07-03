@@ -14,6 +14,33 @@ export const setConcerts = concerts => {
 }
 
 
+const fetchConcertById = (concert) => {
+
+  return {
+    type: 'GET_ONE_CONCERT',
+    concert: concert
+  }
+}
+
+export const fetchConcert = (id) => {
+
+  return dispatch => {
+    fetch(`${API_URL}/concerts/${id}`, {
+      method: "GET",
+      headers: {
+        'Authorization': localStorage.Token,
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(res => res.json())
+    .then(concerts => {
+      dispatch(fetchConcertById(concerts))
+    })
+    .catch(error => console.log(error));
+  }
+  }
+
+
 export const addConcert = concert => {
   return {
     type:'ADD_CONCERT',
@@ -170,39 +197,29 @@ export const getComments = (concertId) => {
   }
 }
 
-export const createComment = (comment) => {
+
+
+
+export const createComment = (comment, concert, routerHistory) => {
   return dispatch => {
     return fetch(`${API_URL}/concerts/${comment.concert_id}/comments`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({comment: comment.comment})
+      body: JSON.stringify({comment: comment})
     })
     .then(handleErrors)
     .then(response => response.json())
     .then(comment => {
       dispatch(addComment(comment))
+      routerHistory.replace(`/concerts/${concert.id}`)
     })
     .catch(error => {
       dispatch({type: 'error'})
      })
   }
 }
-
-export const deleteComment = (commentId, routerHistory) => {
-  return dispatch => {
-    return fetch(`${API_URL}/comments/${commentId}`, {
-      method: "DELETE",
-    })
-    .then(response => {
-      routerHistory.replace('/concerts');
-      dispatch(removeComment(commentId));
-    })
-    .catch(error => console.log(error))
-  }
-}
-
 
 
 function handleErrors(response){
