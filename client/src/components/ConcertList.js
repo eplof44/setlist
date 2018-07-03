@@ -1,5 +1,8 @@
 import ConcertPage from '../containers/ConcertPage';
 import { Link } from 'react-router-dom';
+import ConcertShow from '../containers/ConcertShow';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import React from 'react'
 
@@ -11,6 +14,7 @@ const ConcertList = (props) =>
           <Link key={props.concert.id} to={`/concerts/${props.concert.id}`}>{props.concert.band}</Link>
         </blockquote>
       </div>
+
     </div>
   </div>;
 

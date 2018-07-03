@@ -1,19 +1,29 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import Comments from '../components/Comments'
+import ConcertShow from '../containers/ConcertShow';
 
-class ConcertCard extends Component {
 
+const ConcertCard = ( props ) => {
 
-  render() {
-    return(
-      <div style={{ marginTop: '30px' }}>
-        <div>
-          <h3> <Link key={this.props.concert.id} to={`/concerts/${this.props.concert.id}`}>{this.props.concert.band}</Link> </h3>
-          <br></br>
-        </div>
-      </div>
-    )
-  }
+  return(
+
+    <div>
+
+          <div className="concert-show-card">
+            <h3>Band: {props.concert.band}</h3>
+            <h4> Venue: {props.concert.venue}</h4>
+            <p>Tour: {props.concert.tour}</p>
+            <h6> Date: {props.concert.date}</h6>
+            <h6>Songs: {props.concert.songs}</h6>
+
+            <div className="comment-container">
+              {props.concert.comments.map(comment =>
+                <Comments comment={comment} />
+              )}
+            </div>
+          </div>
+</div>
+)
 }
 
 export default ConcertCard;
