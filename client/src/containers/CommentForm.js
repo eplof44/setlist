@@ -22,15 +22,13 @@ class CommentForm extends Component {
     })
   }
 
-  handleOnSubmit(event) {
-
-    event.preventDefault();
-    this.props.createComment(this.state)
-
-    this.setState({
-      content: "",
-    })
-  }
+  handleOnSubmit = event => {
+      event.preventDefault();
+      this.props.createComment(this.state);
+      this.setState({
+        comment: ''
+      });
+    }
 
   render() {
 
