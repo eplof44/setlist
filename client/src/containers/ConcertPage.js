@@ -13,19 +13,35 @@ class ConcertPage extends Component {
       this.props.getConcerts()
     }
 
-    render(){
-         const { concerts } = this.props;
+    render() {
 
-            return(
-              <div className="ConcertsContainer">
-                {concerts.concerts.map(concert =>
-                  <ConcertList key={concert.id}
-                            concert={concert}
-                             />)}
-           </div>
-       )
-     }
-   }
+
+
+   const sortedConcerts = this.props.concerts.concerts.sort( function( a, b ) {
+   return a.band.toLowerCase().localeCompare(b.band.toLowerCase());
+   })
+
+   return (
+     <div className="container-fluid">
+
+       <h1 className="App poke-title">Concerts</h1>
+
+
+       {sortedConcerts.map(concert =>
+         <ConcertList key={concert.id}
+                           concert={concert}
+                            />)}
+
+       <br />
+
+     </div>
+   )
+ }
+
+}
+
+
+
 
 
   const mapStateToProps = (state) => {

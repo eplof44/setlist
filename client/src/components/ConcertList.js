@@ -11,7 +11,7 @@ const ConcertList = (props) =>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
       <div className="card-block">
         <blockquote className="card-blockquote">
-          <Link key={props.concert.id} to={`/concerts/${props.concert.id}`}>{props.concert.band}</Link>
+          <Link key={props.concert.id} to={`/concerts/${props.concert.id}`}>{props.concert.band}  </Link> {props.concert.date}
         </blockquote>
       </div>
 
