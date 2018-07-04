@@ -15,11 +15,10 @@ class ConcertPage extends Component {
 
     render() {
 
+      const sortedConcerts = this.props.concerts.concerts.sort( function( a, b ) {
+    return a.band.toLowerCase().localeCompare(b.band.toLowerCase());
+  });
 
-
-   const sortedConcerts = this.props.concerts.concerts.sort( function( a, b ) {
-   return a.band.toLowerCase().localeCompare(b.band.toLowerCase());
-   })
 
    return (
      <div className="container-fluid">
@@ -27,7 +26,7 @@ class ConcertPage extends Component {
        <h1 className="App poke-title">Concerts</h1>
 
 
-       {sortedConcerts.map(concert =>
+       {sortedConcerts.length > 0 && sortedConcerts.map(concert =>
          <ConcertList key={concert.id}
                            concert={concert}
                             />)}

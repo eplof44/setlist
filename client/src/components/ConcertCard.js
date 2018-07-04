@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import CommentForm from '../containers/CommentForm';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const ConcertCard = ( {concert} ) => {
@@ -15,7 +15,7 @@ const ConcertCard = ( {concert} ) => {
     <h3>Tour: {concert.tour}</h3>
     <h3>Date: {concert.date}</h3>
     <h3>Songs: {concert.song}</h3>
-    // <Route path="/concerts/:id" component={CommentForm} />
+    <Link to="/concerts"> Back to all concerts </Link>
   </div>
 
 
