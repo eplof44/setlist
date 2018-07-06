@@ -1,33 +1,62 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import CommentForm from '../containers/CommentForm';
-import { Link } from 'react-router-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import React, { Component } from 'react';
+import { connect } from 'react-redux';                                          //connects component to redux store provided by provider component
 
-const ConcertShow = (concert) =>
+import AttendeeButton from '../components/AttendeeButton';
+import Comments from '../components/Comments';
+import CommentForm from './CommentForm';
 
-
-//call ConcertList
-
-    <div>
-    <h3>Band: {concert.band}</h3>
-    <h3>Venue: {concert.venue}</h3>
-    <h3>Tour: {concert.tour}</h3>
-    <h3>Date: {concert.date}</h3>
-    <h3>Songs: {concert.song}</h3>
-
-    </div>
+import { deleteConcert } from '../actions/concerts';
+import { addAttendee } from '../actions/concerts';
+import { editConcert } from '../actions/concerts';
+import { getComments } from '../actions/concerts';
 
 
 
-const mapStateToProps = (state, ownProps) => {
-    const concert = state.concerts.concerts.find(concert => String(concert.id) === ownProps.match.params.id)
-    if (concert) {
-      return { concert: concert }
-    } else {
-      return { concert: {} }
+class ConcertShow extends Component {
+
+  componentDidMount() {
+    this.props.getComments(this.props.match.params.concertId);
+  }
+
+
+  handleOnClick = () => {
+    this.props.addAttendee(this.props.concert)
+  }
+
+  render() {
+    const { concert, deleteConcert, match, history } = this.props;
+    return (
+      <div className="container-fluid text-center">
+          <h1>{concert.band}</h1>
+
+          <h4>Venue:  {concert.band} </h4>
+
+          <h4>Tour: {concert.tour}</h4>
+
+          <h4>Date: {concert.date}</h4>
+
+          <h4>Song: {concert.song}</h4>
+
+
+            <button onClick={() => deleteConcert(concert.id, history)}>
+            <span> Delete </span>
+            </button>
+
+
+          <Comments comments={this.props.comments} />
+        </div>
+      )
     }
   }
 
-export default connect(mapStateToProps)(ConcertShow);
+  const mapStateToProps = (state, ownProps) => {
+    const id = +ownProps.match.params.concertId
+    const concert = state.concerts.concerts.find(concert => concert.id === id) || {}
+    return ({
+      concert: concert,
+      comments: state.comments.comments
+    })
+  }
+
+  export default connect(mapStateToProps, {getComments, deleteConcert, addAttendee})(ConcertShow);

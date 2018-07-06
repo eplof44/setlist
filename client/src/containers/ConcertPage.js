@@ -19,9 +19,9 @@ class ConcertPage extends Component {
           <Route exact path={match.url} render={() => (
             <Concerts concerts={concerts} />
           )}/>
+
           <Route  path={`${match.url}/new`} component={ConcertForm} />
           <Route exact path={`${match.url}/:concertId/edit`} component={ConcertEdit}/>
-          <Route exact path={`${match.url}/:concertId`} component={ConcertShow}/>
         </Switch>
       </div>
     )

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';                                          
 
 import ConcertForm from './ConcertForm';
 import ConcertList from '../components/ConcertList';
+import ConcertShow from './ConcertShow';
 
 import ConcertPage from './ConcertPage';
 
@@ -28,8 +29,9 @@ class App extends Component {
         <switch>
         <Route exact path = '/concerts/new' component = {ConcertForm} />
         <Route exact path = '/concerts' component = {ConcertPage} />
-
+        <Route exact path = '/concerts/:concertId' component={ConcertShow}/>
 </switch>
+
   <Footer />
           </div>
       </Router>
