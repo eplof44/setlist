@@ -7,8 +7,13 @@ import ConcertShow from './ConcertShow';
 import ConcertForm from './ConcertForm';
 import ConcertEdit from './ConcertEdit';
 import { Link } from 'react-router-dom';
+import { getConcerts } from '../actions/concerts';
 
 class ConcertPage extends Component {
+
+  componentDidMount() {
+    this.props.getConcerts()
+  }
 
   render() {
     const { concerts, match } = this.props;
@@ -21,7 +26,9 @@ class ConcertPage extends Component {
           )}/>
 
           <Route  path={`${match.url}/new`} component={ConcertForm} />
-          <Route exact path={`${match.url}/:concertId/edit`} component={ConcertEdit}/>
+          // <Route exact path={`${match.url}/:concertId/edit`} component={ConcertEdit}/>
+          <Route exact path={`${match.url}/:concertlId`} component = {ConcertShow} />
+
         </Switch>
       </div>
     )
@@ -34,4 +41,4 @@ const mapStateToProps = (state) => {
   });
 }
 
-export default connect(mapStateToProps)(ConcertPage);
+export default connect(mapStateToProps,{getConcerts})(ConcertPage);

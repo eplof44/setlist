@@ -8,7 +8,6 @@ import ConcertShow from './ConcertShow';
 
 import ConcertPage from './ConcertPage';
 
-import { getConcerts } from '../actions/concerts';
 
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -16,22 +15,15 @@ import Footer from '../components/Footer';
 
 class App extends Component {
 
-  componentDidMount() {
-    this.props.getConcerts()
-  }
-
   render() {
     return (
       <Router>
       <div className="App">
       <h1> Welcome to Setlist </h1>
       <NavBar />
-      <switch>
       <Route exact path = '/concerts/new' component = {ConcertForm} />
       <Route exact path = '/concerts' component = {ConcertPage} />
       <Route exact path = '/concerts/:concertId' component = {ConcertShow} />
-
-      </switch>
 
       <Footer />
       </div>
@@ -40,4 +32,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, {getConcerts})(App);
+export default App;

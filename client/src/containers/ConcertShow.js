@@ -4,7 +4,6 @@ import { connect } from 'react-redux';                                          
 
 import AttendeeButton from '../components/AttendeeButton';
 import Comments from '../components/Comments';
-import CommentForm from './CommentForm';
 
 import { deleteConcert } from '../actions/concerts';
 import { plusAttendee } from '../actions/concerts';
@@ -36,7 +35,7 @@ class ConcertShow extends Component {
 
           <h4>Date: {concert.date}</h4>
 
-          <h4>Song: {concert.song}</h4>
+          <h4>Setlist: {concert.song}</h4>
 
 
             <button onClick={() => deleteConcert(concert.id, history)}>
@@ -48,6 +47,8 @@ class ConcertShow extends Component {
             </button>
 
             <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
+
+            <h4> Comments: </h4>
             <Comments comments={this.props.comments} />
 
         </div>
