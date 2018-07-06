@@ -14,33 +14,6 @@ export const setConcerts = concerts => {
 }
 
 
-const fetchConcertById = (concert) => {
-
-  return {
-    type: 'GET_ONE_CONCERT',
-    concert: concert
-  }
-}
-
-export const fetchConcert = (id) => {
-
-  return dispatch => {
-    fetch(`${API_URL}/concerts/${id}`, {
-      method: "GET",
-      headers: {
-        'Authorization': localStorage.Token,
-        'Content-Type': 'application/json',
-      }
-    })
-    .then(res => res.json())
-    .then(concerts => {
-      dispatch(fetchConcertById(concerts))
-    })
-    .catch(error => console.log(error));
-  }
-  }
-
-
 export const addConcert = concert => {
   return {
     type:'ADD_CONCERT',
