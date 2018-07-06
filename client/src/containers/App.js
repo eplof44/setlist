@@ -29,7 +29,6 @@ class App extends Component {
         <switch>
         <Route exact path = '/concerts/new' component = {ConcertForm} />
         <Route exact path = '/concerts' component = {ConcertPage} />
-        <Route exact path = '/concerts/:concertId' component={ConcertShow}/>
 </switch>
 
   <Footer />
