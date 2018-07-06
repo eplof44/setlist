@@ -3,11 +3,7 @@ import CommentsList  from './CommentsList'
 
 const Comments = ({ comments }) => {
 
-let order = comments.sort(function(a,b){
-  return new Date(b.created_at) - new Date(a.created_at);
-});
-
-  const renderComments = order.map(comment =>
+  const renderComments = comments.map(comment =>
      <CommentsList comment={comment}  key={comment.id}/>
   );
 
