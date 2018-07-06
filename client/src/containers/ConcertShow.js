@@ -1,16 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import CommentForm from '../containers/CommentForm';
-
-// import Comments from './Comments';
-
-// import { addAttendee } from '../actions/concerts';
-
 import { Link } from 'react-router-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
-const ConcertCard = (concert) =>
+const ConcertShow = (concert) =>
 
 
 //call ConcertList
@@ -24,16 +19,6 @@ const ConcertCard = (concert) =>
 
     </div>
 
-    // <div className="comment-container">
-    //            {this.props.concert.comments.map(comment =>
-    //              <Comments comment={comment} />
-    //            )}
-    //          </div>
-    // <Route path="/concerts/:id" component={CommentForm} />
-    //
-    // <Link to="/concerts"> Back to all concerts </Link>
-
-
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -45,4 +30,4 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
 
-export default connect(mapStateToProps, {addAttendee})(ConcertCard);
+export default connect(mapStateToProps)(ConcertShow);

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';                                          //connects component to redux store provided by provider component
 
 import ConcertForm from './ConcertForm';
 import ConcertList from '../components/ConcertList';
-import ConcertCard from '../components/ConcertCard';
 
 import ConcertPage from './ConcertPage';
 
+import { getConcerts } from '../actions/concerts';
 
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
@@ -14,6 +15,9 @@ import Footer from '../components/Footer';
 
 class App extends Component {
 
+  componentDidMount() {
+  this.props.getConcerts()
+      }
 
   render() {
     return (
@@ -33,4 +37,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, {getConcerts})(App);
