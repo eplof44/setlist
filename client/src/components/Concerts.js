@@ -5,8 +5,8 @@ import { getComments } from '../actions/concerts';
 import { getConcerts } from '../actions/concerts';
 
 const Concerts= ({ concerts }) => {
-  const orderConcerts = concerts.concerts.sort(function(a, b) {
-          return a.band- b.band;
+  const orderConcerts = concerts.concerts.sort( function( a, b ) {
+      return a.band.toLowerCase().localeCompare(b.band.toLowerCase());
         })
   const renderConcerts = orderConcerts.map(concert =>
      <ConcertList concert={concert}  key={concert.id}/>
