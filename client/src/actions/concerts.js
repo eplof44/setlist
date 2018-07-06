@@ -159,7 +159,6 @@ export const deleteConcert = (concertId, routerHistory) => {
 }
 
 export const plusAttendee = (concert) => {
-  debugger
   return dispatch => {
     return fetch(`${API_URL}/concerts/${concert.id}`, {
       method: "PUT",

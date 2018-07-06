@@ -33,14 +33,16 @@ export default (state={concerts:[]}, action) => {
     return {...state, concert: action.concert};
 
     case 'ADD_ATTENDEE':
-         const updatedConcerts = state.concerts.map((concert) => {
-           if (concert.id === action.concert.id) {
-             return action.concert
-           } else {
-             return concert
-           }
-         });
-         return {...state, concerts: updatedConcerts, };
+      const updatedConcerts = state.concerts.map((concert) => {
+        if (concert.id === action.concert.id) {
+          return action.concert
+        } else {
+          return concert
+        }
+      });
+      return {...state,concerts: updatedConcerts, };
+
+
 
        default:
          return state;

@@ -7,7 +7,7 @@ import Comments from '../components/Comments';
 import CommentForm from './CommentForm';
 
 import { deleteConcert } from '../actions/concerts';
-import { addAttendee } from '../actions/concerts';
+import { plusAttendee } from '../actions/concerts';
 import { editConcert } from '../actions/concerts';
 import { getComments } from '../actions/concerts';
 
@@ -21,7 +21,7 @@ class ConcertShow extends Component {
 
 
   handleOnClick = () => {
-    this.props.addAttendee(this.props.concert)
+    this.props.plusAttendee(this.props.concert)
   }
 
   render() {
@@ -47,9 +47,9 @@ class ConcertShow extends Component {
             <span> Edit </span>
             </button>
 
-            <AttendeeButton concert={concert} addAttendee={this.handleOnClick}/>
+            <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
+            <Comments comments={this.props.comments} />
 
-          <Comments comments={this.props.comments} />
         </div>
       )
     }
@@ -64,4 +64,4 @@ class ConcertShow extends Component {
     })
   }
 
-  export default connect(mapStateToProps, {getComments, deleteConcert, addAttendee})(ConcertShow);
+  export default connect(mapStateToProps, {getComments, deleteConcert, plusAttendee})(ConcertShow);
