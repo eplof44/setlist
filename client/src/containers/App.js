@@ -19,10 +19,13 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-      <h1> Welcome to Setlist </h1>
+      <h1> Setlist </h1>
       <NavBar />
+      <Switch>
+
       <Route exact path = '/concerts/new' component = {ConcertForm} />
       <Route exact path = '/concerts' component = {ConcertPage} />
+      </Switch>
       <Route exact path = '/concerts/:concertId' component = {ConcertShow} />
 
       <Footer />

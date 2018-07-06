@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
 
-class CommentsList extends Component {
+const CommentList = (props) =>
+  <div>
+    <div className="card card-inverse card-success card-primary mb-3 text-center">
+      <div className="card-block">
+        <blockquote className="card-blockquote">
 
-  render() {
-      const { comment, created_at } = this.props.comment;
-      let ts= new Date(created_at);
-      let date = ts.toLocaleString()
-    return(
-        <div> {comment}</div>
-    )
-  }
-}
+        {props.comment.content}
+        </blockquote>
+      </div>
 
-export default CommentsList;
+    </div>
+  </div>;
+
+export default CommentList;
