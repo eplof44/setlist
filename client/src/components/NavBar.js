@@ -31,15 +31,8 @@ const NavBar = () => {
         background: "white"
       }}
       >View Concerts</NavLink>
-    <NavLink
-      to="/venues"
-      exact
-      style={link}
-      activeStyle={{
-        background: "white"
-      }}
-      >View Venues</NavLink>
     </div>
     )
-}
+  }
+
 export default NavBar;

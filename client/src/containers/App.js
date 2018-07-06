@@ -6,7 +6,6 @@ import ConcertList from '../components/ConcertList';
 import ConcertCard from '../components/ConcertCard';
 
 import ConcertPage from './ConcertPage';
-import VenuesPage from './VenuesPage';
 
 
 import NavBar from '../components/NavBar';
@@ -25,8 +24,6 @@ class App extends Component {
         <switch>
         <Route exact path = '/concerts/new' component = {ConcertForm} />
         <Route exact path = '/concerts' component = {ConcertPage} />
-        <Route exact path = '/venues' component = {VenuesPage} />
-        <Route exact path= '/concerts/:id' component={ConcertCard} />
 
 </switch>
   <Footer />
