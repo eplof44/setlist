@@ -17,22 +17,24 @@ import Footer from '../components/Footer';
 class App extends Component {
 
   componentDidMount() {
-  this.props.getConcerts()
-      }
+    this.props.getConcerts()
+  }
 
   render() {
     return (
       <Router>
-        <div className="App">
-        <h1> Welcome to Setlist </h1>
-        <NavBar />
-        <switch>
-        <Route exact path = '/concerts/new' component = {ConcertForm} />
-        <Route exact path = '/concerts' component = {ConcertPage} />
-</switch>
+      <div className="App">
+      <h1> Welcome to Setlist </h1>
+      <NavBar />
+      <switch>
+      <Route exact path = '/concerts/new' component = {ConcertForm} />
+      <Route exact path = '/concerts' component = {ConcertPage} />
+      <Route exact path = '/concerts/:concertId' component = {ConcertShow} />
 
-  <Footer />
-          </div>
+      </switch>
+
+      <Footer />
+      </div>
       </Router>
     );
   }

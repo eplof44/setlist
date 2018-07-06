@@ -1,4 +1,6 @@
 export default (state={concerts:[]}, action) => {
+  let idx;
+  let concert;
 
   switch (action.type) {
 
@@ -31,14 +33,17 @@ export default (state={concerts:[]}, action) => {
     return {...state, concert: action.concert};
 
     case 'ADD_ATTENDEE':
-    return state.map(concert => { if (concert.id === action.concertId) {
-      return Object.assign({}, concert, {attendee_count: concert.attendee_count + 1})
-    } else {
-      return concert
-    }
-  });
+         const updatedConcerts = state.concerts.map((concert) => {
+           if (concert.id === action.concert.id) {
+             return action.concert
+           } else {
+             return concert
+           }
+         });
+         return {...state, concerts: updatedConcerts, };
 
-  default:
-  return state;
+       default:
+         return state;
+
 }
 }

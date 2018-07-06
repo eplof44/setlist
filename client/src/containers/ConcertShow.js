@@ -43,6 +43,11 @@ class ConcertShow extends Component {
             <span> Delete </span>
             </button>
 
+            <button onClick={() => editConcert(concert.id, history)}>
+            <span> Edit </span>
+            </button>
+
+            <AttendeeButton concert={concert} addAttendee={this.handleOnClick}/>
 
           <Comments comments={this.props.comments} />
         </div>
