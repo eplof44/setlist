@@ -12,7 +12,7 @@ class CommentForm extends Component {
     this.state = {
 
       content: "",
-      concert_id: this.props.concert_id,
+      concert_id: +this.props.concert_id,
     }
   }
 
@@ -42,7 +42,7 @@ class CommentForm extends Component {
                   type="text"
                   onChange={(event) => this.handleChange(event)}
                   name="content"
-                  value={this.state.title}
+                  value={this.state.content}
                   className="form-control"
                   />
 
@@ -59,18 +59,4 @@ class CommentForm extends Component {
   }
 }
 
-const mapStateToProps = ({ concerts }, ownProps) => {
-
-  return {
-    concert_id: ownProps.match.params.id
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-    createComment: createComment,
-    getConcerts: getConcerts,
-  }, dispatch);
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CommentForm)
+export default connect(null, { createComment })(CommentForm)
