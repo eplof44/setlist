@@ -10,7 +10,9 @@ class CommentForm extends Component {
 
     this.state = {
       content: ""
-    }
+    };
+    this.handleOnChange = this.handleChange.bind(this)
+    this.handleOnSubmit = this.handleOnSubmit.bind(this)
   }
 
   handleChange = event => {
@@ -37,7 +39,7 @@ class CommentForm extends Component {
         <h4>Write a comment</h4>
         <form onSubmit={this.handleOnSubmit}>
           <div>
-            <input
+            <textarea
               className="commentInputBox"
               type="text"
               onChange={this.handleChange}
