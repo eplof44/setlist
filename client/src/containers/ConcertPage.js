@@ -8,6 +8,7 @@ import ConcertForm from './ConcertForm';
 import ConcertEdit from './ConcertEdit';
 import { Link } from 'react-router-dom';
 import { getConcerts } from '../actions/concerts';
+import { bindActionCreators } from 'redux';
 
 class ConcertPage extends Component {
 
@@ -15,25 +16,20 @@ class ConcertPage extends Component {
     this.props.getConcerts()
   }
 
-  render() {
-    const { concerts, match } = this.props;
+render() {
+  const { match, concerts } = this.props;
+  return(
+    <div>
+      <Switch>
+        <Route path={`${match.url}/new`} component={ConcertForm} />
 
-    return (
-      <div>
-        <Switch>
-          <Route exact path={match.url} render={() => (
-            <Concerts concerts={concerts} />
-          )}/>
-
-          <Route  path={`${match.url}/new`} component={ConcertForm} />
-          // <Route exact path={`${match.url}/:concertId/edit`} component={ConcertEdit}/>
-          <Route exact path={`${match.url}/:concertlId`} component = {ConcertShow} />
-
-        </Switch>
-      </div>
-    )
-  }
+        <Route exact path={`${match.url}`} render={() => <Concerts concerts={concerts} />} />
+      </Switch>
+    </div>
+  );
 }
+};
+
 
 const mapStateToProps = (state) => {
   return ({
@@ -41,4 +37,10 @@ const mapStateToProps = (state) => {
   });
 }
 
-export default connect(mapStateToProps,{getConcerts})(ConcertPage);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    getConcerts
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConcertPage);

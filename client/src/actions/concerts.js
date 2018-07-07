@@ -166,23 +166,16 @@ export const getComments = (concertId) => {
 
 
 
-export const createComment = (comment) => {
+export const createComment = comment => {
   return dispatch => {
     return fetch(`${API_URL}/concerts/${comment.concert_id}/comments`, {
       method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({comment: comment})
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({comment})
     })
-    .then(handleErrors)
-    .then(response => response.json())
-    .then(comment => {
-      dispatch(addComment(comment))
-    })
-    .catch(error => {
-      dispatch({type: 'error'})
-     })
+      .then(response => response.json())
+      .then(comment => dispatch(addComment(comment)))
+      .catch(error => console.log(error))
   }
 }
 

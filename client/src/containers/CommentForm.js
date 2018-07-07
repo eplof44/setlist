@@ -1,62 +1,61 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { createComment } from '../actions/concerts'
-import { getConcerts } from '../actions/concerts'
+import { bindActionCreators } from 'redux';
+
 
 class CommentForm extends Component {
   constructor(props) {
-
     super(props);
 
     this.state = {
-
-      content: "",
-      concert_id: +this.props.concert_id,
+      content: ""
     }
   }
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      content: event.target.value
     })
   }
 
   handleOnSubmit = event => {
     event.preventDefault();
-    const { createComment, history } = this.props;
-    createComment(this.state, history);
+    const comment = {
+      content: this.state.content,
+      concert_id: this.props.concert.id
+    }
+    this.props.createComment(comment)
+    this.setState({
+      content: ""
+    })
   }
 
   render() {
-
-    return(
-      <div className="container-fluid create-concert-container">
-        <div className="row comment-form">
-          <div className="row">
-            <div>
-              <h2>Leave a Comment!</h2>
-              <form onSubmit={(event) => this.handleOnSubmit(event)}>
-                <div className="form-group">
-                  <input
-                  type="text"
-                  onChange={(event) => this.handleChange(event)}
-                  name="content"
-                  value={this.state.content}
-                  className="form-control"
-                  />
-
-                  <button type="submit" className="btn custom-btn">Submit</button>
-                </div>
-              </form>
-            </div>
+    return (
+      <div className="commentForm">
+        <h4>Write a comment</h4>
+        <form onSubmit={this.handleOnSubmit}>
+          <div>
+            <input
+              className="commentInputBox"
+              type="text"
+              onChange={this.handleChange}
+              name="content"
+              value={this.state.content}
+            />
           </div>
-
-          <div className="col-sm-3"></div>
-        </div>
+          <button type="submit">Post</button>
+      </form>
       </div>
     )
   }
 }
 
-export default connect(null, { createComment })(CommentForm)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    createComment
+  }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(CommentForm);

@@ -1,10 +1,10 @@
 
 import React, { Component } from 'react';
-import { connect } from 'react-redux';                                          //connects component to redux store provided by provider component
-
+import { connect } from 'react-redux';
 import AttendeeButton from '../components/AttendeeButton';
 import Comments from '../components/Comments';
 import CommentForm from './CommentForm';
+import { Link } from 'react-router-dom'
 
 import { deleteConcert } from '../actions/concerts';
 import { plusAttendee } from '../actions/concerts';
@@ -12,13 +12,11 @@ import { editConcert } from '../actions/concerts';
 import { getComments } from '../actions/concerts';
 
 
-
 class ConcertShow extends Component {
 
   componentDidMount() {
     this.props.getComments(this.props.match.params.concertId);
   }
-
 
   handleOnClick = () => {
     this.props.plusAttendee(this.props.concert)
@@ -28,44 +26,44 @@ class ConcertShow extends Component {
     const { concert, deleteConcert, match, history } = this.props;
     return (
       <div className="container-fluid text-center">
-          <h1>{concert.band}</h1>
+      <h1>{concert.band}</h1>
 
-          <h4>Venue:  {concert.band} </h4>
+      <h4>Venue:  {concert.venue} </h4>
 
-          <h4>Tour: {concert.tour}</h4>
+      <h4>Tour: {concert.tour}</h4>
 
-          <h4>Date: {concert.date}</h4>
+      <h4>Date: {concert.date}</h4>
 
-          <h4>Setlist: {concert.song}</h4>
+      <h4>Setlist: {concert.song}</h4>
 
 
-            <button onClick={() => deleteConcert(concert.id, history)}>
-            <span> Delete </span>
-            </button>
+      <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
 
-            <button onClick={() => editConcert(concert.id, history)}>
-            <span> Edit </span>
-            </button>
+      <CommentForm concertId={this.props.match.params.concertId}/>
+      <h5> Mistake in the setlist? Set the record straight</h5>
+      <Link key={concert.id} to={`/concerts/${concert.id}/edit`}>
+      <button type="button">
+               Edit Concert
+           </button>
+           </Link>
+           <br/>
 
-            <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
+      <button onClick={() => deleteConcert(concert.id, history)}>
+      <span> Delete </span>
+      </button>
 
-            <CommentForm concertId={this.props.match.params.concertId}/>
-
-            <h4> Comments: </h4>
-            <Comments comments={this.props.comments} />
-
-        </div>
-      )
-    }
+      </div>
+    )
   }
+}
 
-  const mapStateToProps = (state, ownProps) => {
-    const id = +ownProps.match.params.concertId
-    const concert = state.concerts.concerts.find(concert => concert.id === id) || {}
-    return ({
-      concert: concert,
-      comments: state.comments.comments
-    })
-  }
+const mapStateToProps = (state, ownProps) => {
+  const id = +ownProps.match.params.concertId
+  const concert = state.concerts.concerts.find(concert => concert.id === id) || {}
+  return ({
+    concert: concert,
+    comments: state.comments.comments
+  })
+}
 
-  export default connect(mapStateToProps, {getComments, deleteConcert, plusAttendee})(ConcertShow);
+export default connect(mapStateToProps, {getComments, deleteConcert, editConcert, plusAttendee})(ConcertShow);

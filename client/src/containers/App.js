@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';                                          //connects component to redux store provided by provider component
+import ConcertEdit from './ConcertEdit';
+import { Link } from 'react-router-dom';
 
 import ConcertForm from './ConcertForm';
 import ConcertList from '../components/ConcertList';
@@ -19,15 +21,19 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-      <h1> Setlist </h1>
+        <div>
+          <h1><Link to="/">Setlist</Link></h1>
+          <h3>Keep Track of What Was Played</h3>
+
+        </div>
       <NavBar />
       <Switch>
+        <Route exact path = '/concerts/new' component = {ConcertForm} />
+        <Route exact path = '/concerts' component = {ConcertPage} />
+        <Route exact path = '/concerts/:concertId' component = {ConcertShow} />
+        <Route exact path= '/concerts/:concertId/edit' component={ConcertEdit} />
 
-      <Route exact path = '/concerts/new' component = {ConcertForm} />
-      <Route exact path = '/concerts' component = {ConcertPage} />
       </Switch>
-      <Route exact path = '/concerts/:concertId' component = {ConcertShow} />
-
       <Footer />
       </div>
       </Router>

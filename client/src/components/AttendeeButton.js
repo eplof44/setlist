@@ -7,7 +7,7 @@ class AttendeeButton extends Component {
     return(
       <div>
         <button onClick={this.props.plusAttendee}>
-          <span> I was there! </span>
+          <span> I Was There! </span>
           <div> {this.props.concert.attendee_count} </div>
           </button>
       </div>

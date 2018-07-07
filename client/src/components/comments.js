@@ -3,7 +3,7 @@ import CommentsList  from './CommentsList'
 
 const Comments = ({ comments }) => {
 
-  const renderComments = comments.map(comment =>
+  const renderComments = comments.comments.map(comment =>
      <CommentsList comment={comment}  key={comment.id}/>
   );
 
