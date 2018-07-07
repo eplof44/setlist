@@ -9,34 +9,16 @@ class ConcertEdit extends Component {
   constructor(props) {
       super(props);
       this.state = {
-        id: "",
-        band: "",
-        venue: "",
-        tour: "",
-        date: "",
-        song: ""
+        id: this.props.concert.id,
+        band: this.props.concert.band,
+        venue: this.props.concert.venue,
+        tour: this.props.concert.tour,
+        date: this.props.concert.date,
+        song: this.props.concert.song
       };
       this.handleOnChange = this.handleOnChange.bind(this)
       this.handleOnSubmit = this.handleOnSubmit.bind(this)
     }
-
-
-    componentDidMount() {
-
-      const { concert } = this.props
-
-      this.setState({
-        id: concert.id,
-        band: concert.band,
-        venue: concert.venue,
-        tour: concert.tour,
-        date: concert.date,
-        song: concert.song
-      })
-
-    }
-
-
 
 
 
@@ -46,11 +28,11 @@ class ConcertEdit extends Component {
       });
     }
 
-  handleOnSubmit = event => {
-    event.preventDefault();
-    const { editConcert, history } = this.props;
-    editConcert(this.state, history);
-  }
+    handleOnSubmit = event => {
+      event.preventDefault();
+      const { editConcert, history } = this.props;
+      editConcert(this.state, history);
+    }
 
   render(){
    return (
@@ -116,6 +98,7 @@ class ConcertEdit extends Component {
      />
      </label>
 
+
      <br></br>
 
 
@@ -126,13 +109,16 @@ class ConcertEdit extends Component {
   }
 }
 
-const mapStateToProps = ({ concerts }, ownProps) => {
-  const concert = concerts[ownProps.match.params.id]
+const mapStateToProps = (state, ownProps) => {
+  const concert = state.concerts.concerts.find(concert => concert.id === parseInt(ownProps.match.params.concertId, 10));
 
-  return {
-    concert: concert
+  if (concert) {
+    return {concert: concert}
+  } else {
+  return { concert: {}};
   }
-}
+};
+
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({

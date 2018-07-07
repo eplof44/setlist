@@ -9,11 +9,11 @@ class CommentForm extends Component {
     super(props);
 
     this.state = {
-      content: ""
+      content: "",
+      concert_id: this.props.concert_id
+
     };
-    this.handleOnChange = this.handleChange.bind(this)
-    this.handleOnSubmit = this.handleOnSubmit.bind(this)
-  }
+}
 
   handleChange = event => {
     this.setState({
@@ -23,14 +23,8 @@ class CommentForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    const comment = {
-      content: this.state.content,
-      concert_id: this.props.concert.id
-    }
-    this.props.createComment(comment)
-    this.setState({
-      content: ""
-    })
+    const { createComment, history } = this.props;
+    createComment(this.state, history);
   }
 
   render() {
@@ -53,6 +47,8 @@ class CommentForm extends Component {
     )
   }
 }
+
+
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({

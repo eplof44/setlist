@@ -111,10 +111,7 @@ export const editConcert = (concert, routerHistory) => {
       dispatch(updateConcert(concert))
       routerHistory.replace(`/concerts/${concert.id}`)
     })
-    .catch(error => {
-      dispatch({type: 'error'})
-      routerHistory.replace('/concerts');
-     })
+    .catch(error => console.log(error))
   }
 }
 

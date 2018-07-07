@@ -5,7 +5,6 @@ import { connect } from 'react-redux';                                          
 import Concerts from '../components/Concerts';
 import ConcertShow from './ConcertShow';
 import ConcertForm from './ConcertForm';
-import ConcertEdit from './ConcertEdit';
 import { Link } from 'react-router-dom';
 import { getConcerts } from '../actions/concerts';
 import { bindActionCreators } from 'redux';
