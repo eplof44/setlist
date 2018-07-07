@@ -1,5 +1,4 @@
 export default (state={concerts:[]}, action) => {
-  let concert;
 
   switch (action.type) {
 

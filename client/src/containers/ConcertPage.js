@@ -3,9 +3,7 @@ import { Route, Switch  } from 'react-router-dom';
 import '../App.css';
 import { connect } from 'react-redux';                                          //connects component to redux store provided by provider component
 import Concerts from '../components/Concerts';
-import ConcertShow from './ConcertShow';
 import ConcertForm from './ConcertForm';
-import { Link } from 'react-router-dom';
 import { getConcerts } from '../actions/concerts';
 import { bindActionCreators } from 'redux';
 

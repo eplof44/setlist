@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';                                          //connects component to redux store provided by provider component
 import ConcertEdit from './ConcertEdit';
 import { Link } from 'react-router-dom';
 
 import ConcertForm from './ConcertForm';
-import ConcertList from '../components/ConcertList';
 import ConcertShow from './ConcertShow';
 
 import ConcertPage from './ConcertPage';

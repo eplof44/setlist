@@ -9,6 +9,7 @@ import { deleteConcert } from '../actions/concerts';
 import { plusAttendee } from '../actions/concerts';
 import { editConcert } from '../actions/concerts';
 import { getComments } from '../actions/concerts';
+import { bindActionCreators } from 'redux';
 
 
 class ConcertShow extends Component {
@@ -63,4 +64,13 @@ const mapStateToProps = (state, ownProps) => {
   })
 }
 
-export default connect(mapStateToProps, {getComments, deleteConcert, editConcert, plusAttendee})(ConcertShow);
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    getComments, deleteConcert, editConcert, plusAttendee
+  }, dispatch);
+}
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(ConcertShow);

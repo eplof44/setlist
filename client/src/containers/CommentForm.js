@@ -33,7 +33,7 @@ class CommentForm extends Component {
   render() {
     return (
       <div className="commentForm">
-        <h4>Write a comment</h4>
+        <h4>Leave a comment</h4>
         <form onSubmit={this.handleOnSubmit}>
           <div>
             <input
