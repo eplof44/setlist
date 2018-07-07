@@ -21,7 +21,6 @@ render() {
     <div>
       <Switch>
         <Route path={`${match.url}/new`} component={ConcertForm} />
-
         <Route exact path={`${match.url}`} render={() => <Concerts concerts={concerts} />} />
       </Switch>
     </div>

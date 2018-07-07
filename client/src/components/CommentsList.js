@@ -1,16 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
+import Comment from './Comment'
 
-const CommentList = (props) =>
-  <div>
-    <div className="card card-inverse card-success card-primary mb-3 text-center">
-      <div className="card-block">
-        <blockquote className="card-blockquote">
+const CommentsList = ({ comments }) => {
 
-        {props.comment.content}
-        </blockquote>
-      </div>
+let order = comments.sort(function(a,b){
+  return new Date(b.created_at) - new Date(a.created_at);
+});
 
+  const renderComments = order.map(comment =>
+     <Comment comment={comment}  key={comment.id}/>
+  );
+
+  return (
+    <div className="container-fluid text-center" style={{width: 600}}>
+      {renderComments}
     </div>
-  </div>;
+  );
+};
 
-export default CommentList;
+export default CommentsList;

@@ -2,10 +2,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AttendeeButton from '../components/AttendeeButton';
-import Comments from '../components/Comments';
 import CommentForm from './CommentForm';
+import Comment from '../components/Comment';
 import { Link } from 'react-router-dom'
-
 import { deleteConcert } from '../actions/concerts';
 import { plusAttendee } from '../actions/concerts';
 import { editConcert } from '../actions/concerts';
@@ -15,8 +14,8 @@ import { getComments } from '../actions/concerts';
 class ConcertShow extends Component {
 
   componentDidMount() {
-    this.props.getComments(this.props.match.params.concertId);
-  }
+      this.props.getComments(this.props.match.params.concertId);
+    }
 
   handleOnClick = () => {
     this.props.plusAttendee(this.props.concert)
@@ -27,21 +26,18 @@ class ConcertShow extends Component {
     return (
       <div className="container-fluid text-center">
       <h1>{concert.band}</h1>
-
       <h4>Venue:  {concert.venue} </h4>
-
       <h4>Tour: {concert.tour}</h4>
-
       <h4>Date: {concert.date}</h4>
-
       <h4>Setlist: {concert.song}</h4>
-
 
       <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
 
       <CommentForm concert={concert} />
+      <Comment comment={this.props.comments} />
 
-      <h5> Mistake in the setlist? Set the record straight:</h5>
+
+      <h5> Mistake in the setlist? Set the 'record' (get it) straight:</h5>
       <Link key={concert.id} to={`/concerts/${concert.id}/edit`}>
       <button type="button">
                Edit Concert

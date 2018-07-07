@@ -34,6 +34,7 @@ class App extends Component {
         <Route exact path= '/concerts/:concertId/edit' component={ConcertEdit} />
 
       </Switch>
+<br />
       <Footer />
       </div>
       </Router>
