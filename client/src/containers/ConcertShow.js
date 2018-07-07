@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AttendeeButton from '../components/AttendeeButton';
 import CommentForm from './CommentForm';
-// import Comment from '../components/Comment';
+import Comment from '../components/Comment';
 import { Link } from 'react-router-dom'
 import { deleteConcert } from '../actions/concerts';
 import { plusAttendee } from '../actions/concerts';
@@ -32,6 +32,7 @@ class ConcertShow extends Component {
       <h4>Date: {concert.date}</h4>
       <h4>Setlist: {concert.song}</h4>
       <h4>Comments</h4>
+      <Comment concert={concert} />
 
       <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
 
@@ -60,7 +61,7 @@ const mapStateToProps = (state, ownProps) => {
   const concert = state.concerts.concerts.find(concert => concert.id === id) || {}
   return ({
     concert: concert,
-    comments: state.comments.comments
+    comments: state.comments
   })
 }
 
