@@ -3,17 +3,14 @@ import { connect } from 'react-redux';
 import { createComment } from '../actions/concerts'
 import { bindActionCreators } from 'redux';
 
-
 class CommentForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      content: "",
-      concert_id: this.props.concert_id
-
-    };
-}
+      content: ""
+    }
+  }
 
   handleChange = event => {
     this.setState({
@@ -23,8 +20,14 @@ class CommentForm extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    const { createComment, history } = this.props;
-    createComment(this.state, history);
+    const comment = {
+      content: this.state.content,
+      concert_id: this.props.concert.id
+    }
+    this.props.createComment(comment)
+    this.setState({
+      content: ""
+    })
   }
 
   render() {
@@ -33,7 +36,7 @@ class CommentForm extends Component {
         <h4>Write a comment</h4>
         <form onSubmit={this.handleOnSubmit}>
           <div>
-            <textarea
+            <input
               className="commentInputBox"
               type="text"
               onChange={this.handleChange}
@@ -41,14 +44,12 @@ class CommentForm extends Component {
               value={this.state.content}
             />
           </div>
-          <button type="submit">Post</button>
+          <button bsStyle="primary" type="submit">Post</button>
       </form>
       </div>
     )
   }
 }
-
-
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({

@@ -39,8 +39,9 @@ class ConcertShow extends Component {
 
       <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
 
-      <CommentForm concertId={this.props.match.params.concertId}/>
-      <h5> Mistake in the setlist? Set the record straight</h5>
+      <CommentForm concert={concert} />
+
+      <h5> Mistake in the setlist? Set the record straight:</h5>
       <Link key={concert.id} to={`/concerts/${concert.id}/edit`}>
       <button type="button">
                Edit Concert

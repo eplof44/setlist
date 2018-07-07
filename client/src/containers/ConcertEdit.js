@@ -21,7 +21,6 @@ class ConcertEdit extends Component {
     }
 
 
-
   handleOnChange = event => {
       this.setState({
         [event.target.name]: event.target.value
@@ -110,7 +109,7 @@ class ConcertEdit extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const concert = state.concerts.concerts.find(concert => concert.id === parseInt(ownProps.match.params.concertId, 10));
+  const concert = state.concerts.concerts.find(concert => concert.id === parseInt(ownProps.match.params.concertId));
 
   if (concert) {
     return {concert: concert}
