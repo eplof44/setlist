@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AttendeeButton from '../components/AttendeeButton';
 import CommentForm from './CommentForm';
-import Comment from '../components/Comment';
+// import Comment from '../components/Comment';
 import { Link } from 'react-router-dom'
 import { deleteConcert } from '../actions/concerts';
 import { plusAttendee } from '../actions/concerts';
@@ -23,7 +23,7 @@ class ConcertShow extends Component {
   }
 
   render() {
-    const { concert, deleteConcert, match, history } = this.props;
+    const { concert, comment, deleteConcert, history } = this.props;
     return (
       <div className="container-fluid text-center">
       <h1>{concert.band}</h1>
@@ -31,11 +31,11 @@ class ConcertShow extends Component {
       <h4>Tour: {concert.tour}</h4>
       <h4>Date: {concert.date}</h4>
       <h4>Setlist: {concert.song}</h4>
+      <h4>Comments</h4>
 
       <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
 
       <CommentForm concert={concert} />
-      <Comment comment={this.props.comments} />
 
 
       <h5> Mistake in the setlist? Set the 'record' (get it) straight:</h5>
@@ -70,7 +70,6 @@ const mapDispatchToProps = (dispatch) => {
     getComments, deleteConcert, editConcert, plusAttendee
   }, dispatch);
 }
-
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(ConcertShow);

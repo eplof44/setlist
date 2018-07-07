@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Comment = (props) =>
+const Comment = ({props}) =>
 
-        <div key={props.comment.id}> {props.comment.content}</div>
+        <div>{props.comment.content}</div>
 
 
 export default Comment;

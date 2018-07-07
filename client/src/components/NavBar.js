@@ -31,6 +31,7 @@ const NavBar = () => {
         background: "white"
       }}
       >View Concerts</NavLink>
+    
     </div>
     )
   }

@@ -44,7 +44,7 @@ class CommentForm extends Component {
               value={this.state.content}
             />
           </div>
-          <button bsStyle="primary" type="submit">Post</button>
+          <button type="submit">Post</button>
       </form>
       </div>
     )

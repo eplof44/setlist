@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ConcertList from './ConcertList';
 
 
-const Concerts = ({ concerts }) => {
+const Concerts= ({ concerts }) => {
   const orderConcerts = concerts.concerts.sort( function( a, b ) {
       return a.band.toLowerCase().localeCompare(b.band.toLowerCase());
         })
@@ -11,14 +12,26 @@ const Concerts = ({ concerts }) => {
 
   );
 
-  return (
+let randomShow = concerts.concerts[Math.floor(Math.random() * concerts.concerts.length)];
+let id = randomShow ? randomShow.id : 1
 
-      <div className="container">
-        <div className="row">
+return (
+  <div>
+    <div className="container-fluid text-center">
+    <div className="row">
           {renderConcerts}
         </div>
     </div>
-  );
+
+    <div className="container">
+    <Link to={`/concerts/${id}`}>
+      <button>
+        Suggest a Show For Me
+      </button>
+    </Link>
+    </div>
+  </div>
+);
 };
 
 export default Concerts;
