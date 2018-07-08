@@ -4,21 +4,17 @@
   position: relative;
   color: purple;
   text-transform: uppercase;
-  white-space: nowrap;
-  text-transform: full-width;
-  font-size: 6vw;
-  font-family: 'Montserrat', sans-serif;
+  font-size: 8vw;
+  margin: 0px;
+  font-family: 'Shadows Into Light', cursive;
 }
 
 .TopNav h3{
   text-align: center;
-  position: relative;
-  font-weight: bolder;
   color: purple;
-  white-space: nowrap;
-  text-transform: full-width;
   font-size: 2vw;
-  font-family: 'Montserrat', sans-serif;
+  margin: 0px;
+  font-family: 'Shadows Into Light', cursive;
 }
 
 .navbar-container {
@@ -35,7 +31,7 @@
   font-weight: 600;
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .navbar-item:hover {

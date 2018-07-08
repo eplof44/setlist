@@ -10,6 +10,8 @@ import { plusAttendee } from '../actions/concerts';
 import { editConcert } from '../actions/concerts';
 import { getComments } from '../actions/concerts';
 import { bindActionCreators } from 'redux';
+import { Route, Switch  } from 'react-router-dom';
+
 import '../styles/Concerts.css';
 
 
@@ -24,7 +26,7 @@ class ConcertShow extends Component {
   }
 
   render() {
-    const { concert, deleteConcert, history } = this.props;
+    const { match, comment, concert, deleteConcert, history } = this.props;
 
     return (
 
@@ -35,7 +37,7 @@ class ConcertShow extends Component {
       <h4>Date: {concert.date}</h4>
       <h4>Setlist: {concert.song}</h4>
       <h4>Comments</h4>
-      <Comment comment={this.props.comment}/>
+      <Route exact path={`${match.url}`} render={() => <Comment comment={comment} />} />
       <h5> Mark Yourself Attended:</h5>
 
       <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>

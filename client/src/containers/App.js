@@ -19,7 +19,6 @@ class App extends Component {
         <div className="TopNav">
           <h1>Setlist</h1>
           <h3>Keep Track of What Was Played</h3>
-
         </div>
       <NavBar />
       <Switch>
@@ -27,9 +26,8 @@ class App extends Component {
         <Route exact path = '/concerts' component = {ConcertPage} />
         <Route exact path = '/concerts/:concertId' component = {ConcertShow} />
         <Route exact path= '/concerts/:concertId/edit' component={ConcertEdit} />
-
       </Switch>
-<br />
+      <br />
       <Footer />
       </div>
       </Router>
