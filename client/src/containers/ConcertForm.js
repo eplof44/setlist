@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createConcert } from '../actions/concerts';
 import { bindActionCreators } from 'redux';
-import '../styles/Forms.css';
 
 //
 class ConcertForm extends Component {
@@ -33,6 +32,11 @@ class ConcertForm extends Component {
     createConcert(this.state, history);
   }
 
+  handleAddSong = () => {
+     this.setState({
+       song: this.state.song.concat([{ song: '' }])
+     });
+   }
 
   render(){
 
@@ -89,16 +93,16 @@ class ConcertForm extends Component {
 
 
       <label>
-      Setlist: <br></br>
-      <textarea
+      Song: <br></br>
+      <input
       className="form-control"
       type="text"
       name="song"
-      placeholder="Songs"
+      placeholder=""
       value={this.state.song}
       onChange={this.handleOnChange}
       />
-      </label>
+      </label> <br />
 
 
       <br></br>

@@ -13,3 +13,25 @@ body {
     height: 88%;
     position: absolute;
 }
+
+button {
+    background-color: gray;
+    border: none;
+    color: white;
+    padding: 9px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+button:hover {
+  background-color: purple
+}
