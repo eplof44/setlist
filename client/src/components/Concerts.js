@@ -18,6 +18,8 @@ let id = randomShow ? randomShow.id : 1
 return (
   <div>
     <div className="container-fluid text-center">
+    <h2> Concerts </h2>
+
     <div className="row">
           {renderConcerts}
         </div>

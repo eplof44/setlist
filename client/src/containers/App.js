@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ConcertEdit from './ConcertEdit';
 import { Link } from 'react-router-dom';
-
 import ConcertForm from './ConcertForm';
 import ConcertShow from './ConcertShow';
-
 import ConcertPage from './ConcertPage';
-
-
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import '../styles/NavBar.css';
 
 
 class App extends Component {
@@ -19,8 +16,8 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-        <div>
-          <h1><Link to="/">Setlist</Link></h1>
+        <div className="TopNav">
+          <h1>Setlist</h1>
           <h3>Keep Track of What Was Played</h3>
 
         </div>

@@ -10,12 +10,13 @@ import { plusAttendee } from '../actions/concerts';
 import { editConcert } from '../actions/concerts';
 import { getComments } from '../actions/concerts';
 import { bindActionCreators } from 'redux';
+import '../styles/Concerts.css';
 
 
 class ConcertShow extends Component {
 
   componentDidMount() {
-      this.props.getComments(this.props.match.params.concertId);
+      this.props.getComments(this.props.concert.id);
     }
 
   handleOnClick = () => {
@@ -23,16 +24,18 @@ class ConcertShow extends Component {
   }
 
   render() {
-    const { concert, comment, deleteConcert, history } = this.props;
+    const { concert, deleteConcert, history } = this.props;
+
     return (
-      <div className="container-fluid text-center">
+
+      <div className="concert-card">
       <h1>{concert.band}</h1>
       <h4>Venue:  {concert.venue} </h4>
       <h4>Tour: {concert.tour}</h4>
       <h4>Date: {concert.date}</h4>
       <h4>Setlist: {concert.song}</h4>
       <h4>Comments</h4>
-      <Comment concert={concert} />
+      <Comment comment={this.props.comment}/>
 
       <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
 

@@ -36,6 +36,8 @@ class ConcertEdit extends Component {
   render(){
    return (
      <div>
+     <div>  <h2> Edit Show: </h2> </div>
+
      <form style={{ marginTop: '16px' }} onSubmit={this.handleOnSubmit} >
      <label>
      Band: <br></br>

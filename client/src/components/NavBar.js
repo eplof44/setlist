@@ -1,37 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import '../styles/NavBar.css'
 
-
-const link = {
-  width: '80px',
-  padding: '12px',
-  margin: '0 6px 6px',
-  background: 'white',
-  textDecoration: 'none',
-  color: 'black',
-}
 
 
 const NavBar = () => {
   return(
-  <div className="navbar">
+  <div className="navbar-container">
     <NavLink
+     className="navbar-item"
       to="/concerts/new"
-      exact
-      style={link}
-      activeStyle={{
-        background: "white"
-      }}
       >Add a New Setlist</NavLink>
+
     <NavLink
+    className="navbar-item"
       to="/concerts"
-      exact
-      style={link}
-      activeStyle={{
-        background: "white"
-      }}
+
       >View Concerts</NavLink>
-    
+
     </div>
     )
   }
