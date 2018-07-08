@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createConcert } from '../actions/concerts';
 import { bindActionCreators } from 'redux';
+import '../styles/Forms.css';
 
 //
 class ConcertForm extends Component {
@@ -93,11 +94,12 @@ class ConcertForm extends Component {
       className="form-control"
       type="text"
       name="song"
-      placeholder="Setlist"
+      placeholder="Songs"
       value={this.state.song}
       onChange={this.handleOnChange}
       />
       </label>
+
 
       <br></br>
 

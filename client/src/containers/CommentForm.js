@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createComment } from '../actions/concerts'
 import { bindActionCreators } from 'redux';
+import '../styles/Forms.css';
 
 class CommentForm extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class CommentForm extends Component {
         <h4>Leave a comment</h4>
         <form onSubmit={this.handleOnSubmit}>
           <div>
-            <input
+            <textarea
               className="commentInputBox"
               type="text"
               onChange={this.handleChange}

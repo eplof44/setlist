@@ -19,12 +19,7 @@ h1, h4, h5 {
 
 li {
   font-family: 'Montserrat', sans-serif;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 8px
-}
-
-li:last-child {
-  border: none;
+  padding-bottom: 9px
 }
 
 li a {
@@ -41,5 +36,6 @@ li a {
 
 li a:hover {
   font-size: 15px;
-  background: #f6f6f6;
+  color: white;
+  background: purple; opacity: 0.5;
 }
