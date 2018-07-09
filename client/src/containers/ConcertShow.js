@@ -39,9 +39,6 @@ class ConcertShow extends Component {
 
       <h5> Mark Yourself Attended:</h5>
       <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
-      <h5>Comments</h5>
-      <Comment comments={comments} />
-      <CommentForm concert={concert} />
 
 
       <h5> Mistake in the setlist? Set the 'record' (get it) straight:</h5>
@@ -54,6 +51,9 @@ class ConcertShow extends Component {
       <button onClick={() => deleteConcert(concert.id, history)}>
       <span> Delete </span>
       </button>
+      <h5>Comments</h5>
+      <Comment comments={comments} />
+      <CommentForm concert={concert} />
 
       </div>
     )
