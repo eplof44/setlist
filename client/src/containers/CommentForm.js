@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createComment } from '../actions/concerts'
 import { bindActionCreators } from 'redux';
+import '../styles/Forms.css';
 
 class CommentForm extends Component {
   constructor(props) {

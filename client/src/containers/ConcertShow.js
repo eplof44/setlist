@@ -17,6 +17,7 @@ import '../styles/Concerts.css';
 
 class ConcertShow extends Component {
 
+
   componentDidMount() {
       this.props.getComments(this.props.concert.id);
     }
@@ -26,7 +27,7 @@ class ConcertShow extends Component {
   }
 
   render() {
-    const { match, comments, concert, deleteConcert, history } = this.props;
+    const { comments, concert, deleteConcert, history } = this.props;
     return (
 
       <div className="concert-card">
@@ -36,11 +37,10 @@ class ConcertShow extends Component {
       <h4>Date: {concert.date}</h4>
       <h4>Setlist: {concert.song}</h4>
 
-      <h4>Comments</h4>
-      <Comment comments={comments} />
-
       <h5> Mark Yourself Attended:</h5>
       <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
+      <h5>Comments</h5>
+      <Comment comments={comments} />
       <CommentForm concert={concert} />
 
 
