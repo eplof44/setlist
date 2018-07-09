@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Comment = (comment) => {
+const Comment = ({comments}) => {
   return (
     <div>
-  <h1>  {comment.content} </h1>
+  {comments.map(comment => <h4>{comment.content}</h4>)}
     </div>
   );
 }

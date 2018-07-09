@@ -35,7 +35,7 @@ li a {
 }
 
 li a:hover {
-  font-size: 15px;
+  font-size: 22px;
   color: white;
   background: purple; opacity: 0.5;
 }

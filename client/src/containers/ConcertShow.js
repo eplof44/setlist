@@ -26,8 +26,7 @@ class ConcertShow extends Component {
   }
 
   render() {
-    const { match, comment, concert, deleteConcert, history } = this.props;
-
+    const { match, comments, concert, deleteConcert, history } = this.props;
     return (
 
       <div className="concert-card">
@@ -36,12 +35,12 @@ class ConcertShow extends Component {
       <h4>Tour: {concert.tour}</h4>
       <h4>Date: {concert.date}</h4>
       <h4>Setlist: {concert.song}</h4>
+
       <h4>Comments</h4>
-      <Route exact path={`${match.url}`} render={() => <Comment comment={comment} />} />
+      <Comment comments={comments} />
+
       <h5> Mark Yourself Attended:</h5>
-
       <AttendeeButton concert={concert} plusAttendee={this.handleOnClick}/>
-
       <CommentForm concert={concert} />
 
 
@@ -66,7 +65,7 @@ const mapStateToProps = (state, ownProps) => {
   const concert = state.concerts.concerts.find(concert => concert.id === id) || {}
   return ({
     concert: concert,
-    comments: state.comments
+    comments: state.comments.comments
   })
 }
 
