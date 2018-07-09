@@ -11,7 +11,7 @@ import { editConcert } from '../actions/concerts';
 import { getComments } from '../actions/concerts';
 import { bindActionCreators } from 'redux';
 import { Route, Switch  } from 'react-router-dom';
-
+import '../styles/Comments.css';
 import '../styles/Concerts.css';
 
 
@@ -54,7 +54,6 @@ class ConcertShow extends Component {
       <h5>Comments</h5>
       <Comment comments={comments} />
       <CommentForm concert={concert} />
-
       </div>
     )
   }

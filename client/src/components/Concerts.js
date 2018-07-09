@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ConcertList from './ConcertList';
 
 
-const Concerts= ({ concerts }) => {
+const Concerts = ({ concerts }) => {
   const orderConcerts = concerts.concerts.sort( function( a, b ) {
       return a.band.toLowerCase().localeCompare(b.band.toLowerCase());
         })
@@ -17,15 +17,15 @@ let id = randomShow ? randomShow.id : 1
 
 return (
   <div>
-    <div className="container-fluid text-center">
+    <div>
     <h2> Concerts </h2>
 
-    <div className="row">
+    <div>
           {renderConcerts}
         </div>
     </div>
 
-    <div className="container">
+    <div>
     <Link to={`/concerts/${id}`}>
       <button>
         Suggest a Show For Me
