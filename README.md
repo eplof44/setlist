@@ -2,7 +2,7 @@
 
 This app allows users to add concerts and the setlist associated. This app was built with a rails backend and react front end.
 
-$ git clone git@github.com:eplof44/setlist.git
+$ Fork this repository & clone into it from your terminal
 
 $ cd setlist $ rails db:migrate $ rails s -p 3001
 
