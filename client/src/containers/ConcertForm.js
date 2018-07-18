@@ -33,11 +33,6 @@ class ConcertForm extends Component {
     createConcert(this.state, history);
   }
 
-  handleAddSong = () => {
-     this.setState({
-       song: this.state.song.concat([{ song: '' }])
-     });
-   }
 
   render(){
 
