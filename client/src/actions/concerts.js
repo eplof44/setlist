@@ -75,6 +75,7 @@ export const getConcerts = () => {
 }
 
 export const createConcert = (concert, routerHistory) => {
+  console.log('B')
   return dispatch => {
     return fetch(`${API_URL}/concerts`, {
       method: "POST",
@@ -86,6 +87,7 @@ export const createConcert = (concert, routerHistory) => {
     .then(handleErrors)
     .then(response => response.json())
     .then(concert => {
+      console.log('D')
       dispatch(addConcert(concert))
       routerHistory.replace(`/concerts/${concert.id}`)
     })
@@ -94,6 +96,7 @@ export const createConcert = (concert, routerHistory) => {
       routerHistory.replace('/concerts/new');
      })
   }
+  console.log('E')
 }
 
 export const editConcert = (concert, routerHistory) => {

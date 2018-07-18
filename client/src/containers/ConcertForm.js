@@ -30,7 +30,9 @@ class ConcertForm extends Component {
   handleOnSubmit = event => {
     event.preventDefault();
     const { createConcert, history } = this.props;
+    console.log('A')
     createConcert(this.state, history);
+    console.log('C')
   }
 
 

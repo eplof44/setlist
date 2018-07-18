@@ -13,6 +13,7 @@ class ConcertPage extends Component {
     this.props.getConcerts()
   }
 
+
 render() {
   const { match, concerts } = this.props;
   return(
@@ -20,6 +21,7 @@ render() {
       <Switch>
         <Route exact path={`${match.url}`} render={() => <Concerts concerts={concerts} />} />
       </Switch>
+
     </div>
   );
 }
