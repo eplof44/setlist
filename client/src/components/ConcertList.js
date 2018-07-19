@@ -18,8 +18,8 @@ class ConcertList extends Component {
 
       <div>
       <li><Link key={this.props.concert.id} to={`/concerts/${this.props.concert.id}`}>{this.props.concert.band} on {this.props.concert.date} at {this.props.concert.venue}  </Link></li>
-     <button onClick={() => this.props.increaseLikes(this.props.concert)}> 
-      <span> Like </span>
+      <button onClick={() => this.props.increaseLikes(this.props.concert)}>
+      <span> Woo Hoo Great Show! </span>
       <div> {this.props.concert.likes} </div>
       </button>
       </div>
