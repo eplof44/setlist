@@ -35,6 +35,15 @@ export const addAttendee = concert => {
   }
 }
 
+
+export const addLike = concert => {
+  return {
+    type: 'ADD_LIKE',
+    concert
+  }
+}
+
+
 export const updateConcert = concert => {
   return {
     type: 'EDIT_CONCERT',
@@ -145,6 +154,26 @@ export const plusAttendee = (concert) => {
     .catch(error => console.log(error))
   }
 }
+
+
+export const increaseLikes = (concert) => {
+  return dispatch => {
+    return fetch(`${API_URL}/concerts/${concert.id}`, {
+      method: "PUT",
+      headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({concert: Object.assign(...concert, { likes: concert.likes + 1 })})
+      })
+      .then(response => response.json())
+      .then(concert => {
+
+        dispatch(addLike(concert))
+      })
+    .catch(error => console.log(error))
+  }
+}
+
 
 //comments async actions
 export const getComments = (concertId) => {
